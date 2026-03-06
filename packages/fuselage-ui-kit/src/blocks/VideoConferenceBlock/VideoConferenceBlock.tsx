@@ -109,9 +109,21 @@ const VideoConferenceBlock = ({ block }: VideoConferenceBlockProps): ReactElemen
 			: t('joined');
 	}, [displayAvatars, t, result.data?.users.length]);
 
-	if (result.isPending || result.isError) {
-		// TODO: error handling
+	if (result.isPending) {
 		return <VideoConfMessageSkeleton />;
+	}
+
+	if (result.isError) {
+		return (
+			<VideoConfMessage>
+				<VideoConfMessageRow>
+					<VideoConfMessageContent>
+						<VideoConfMessageIcon />
+						<VideoConfMessageText>{t('Failed_to_load_call_information')}</VideoConfMessageText>
+					</VideoConfMessageContent>
+				</VideoConfMessageRow>
+			</VideoConfMessage>
+		);
 	}
 
 	const { data } = result;
