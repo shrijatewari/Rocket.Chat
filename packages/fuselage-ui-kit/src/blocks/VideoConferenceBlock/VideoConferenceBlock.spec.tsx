@@ -3,8 +3,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { ReactElement } from 'react';
 
 import VideoConferenceBlock from './VideoConferenceBlock';
-import * as mockUiContexts from '../../../__mocks__/ui-contexts';
-import * as mockUiKitContext from '../../../__mocks__/UiKitContext';
 
 jest.mock('@rocket.chat/ui-contexts', () => ({
 	...jest.requireActual('@rocket.chat/ui-contexts'),
