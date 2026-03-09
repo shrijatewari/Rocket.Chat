@@ -87,12 +87,6 @@ const VideoConferenceBlock = ({ block }: VideoConferenceBlockProps): ReactElemen
 		);
 	};
 
-	const openDiscussion: MouseEventHandler<HTMLButtonElement> = (_e) => {
-		if (data.discussionRid) {
-			goToRoom(data.discussionRid);
-		}
-	};
-
 	const messageFooterText = useMemo(() => {
 		const usersCount = result.data?.users.length;
 
@@ -115,6 +109,12 @@ const VideoConferenceBlock = ({ block }: VideoConferenceBlockProps): ReactElemen
 	}
 
 	const { data } = result;
+
+	const openDiscussion: MouseEventHandler<HTMLButtonElement> = (_e) => {
+		if (data.discussionRid) {
+			goToRoom(data.discussionRid);
+		}
+	};
 	const isUserCaller = data.createdBy._id === userId;
 
 	const joinedNamesOrUsernames = [...data.users]
